@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Poppins, sans-serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
 body{
@@ -14,9 +14,60 @@ body{
     max-height: 800px;
     background: linear-gradient(135deg, #1CB5E0, #000046);
     
-    color: #fff;
+    color: #ffffff;
     margin: 100px auto 0;
     border-radius: 40px;
     padding: 40px 35px;
     text-align: center;
+
+    position: relative;
+}
+.box canvas{
+    height: 500px;
+    width: 500px;
+    border-radius: 25px;
+    color: white;
+}
+.h1{
+    font-size: 40px;
+    font-weight: bolder;
+}
+.pIntro{
+    font-size: 15px;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+.newGameButton{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 60px;
+    left: 540px;
+}
+button{
+    background-color: #007AFF;
+    color: white;
+    position: absolute;
+    font-size: 27px;
+    font-weight: bolder;
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
+}
+.search{
+    width: 200px;
+    position: relative;
+    bottom: 80px;
+    left: 150px;
+}
+.search text{
+    border: 0;
+    outline: 0;
+    background: #ffffff;
+    color: #555;
+    height: 60px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
 }
