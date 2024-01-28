@@ -43,6 +43,7 @@ body{
     position: relative;
     bottom: 60px;
     left: 540px;
+    font-size: 25px;
 }
 .loginForm {
     display: flex;
@@ -56,9 +57,10 @@ body{
 
 }
 
-div.loginButton, div.logoutButton {
+div.loginButton{
     width: 30px;
     height: 30px;
+    font-size: 15px;
 }
 
 
@@ -66,8 +68,14 @@ button{
     background-color: #007AFF;
     color: white;
     position: absolute;
-    font-size: 27px;
-    font-weight: bolder;
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
+}
+div.ans_one, div.ans_two, div.ans_three, div.ans_four{
+
+    font-size: 15px;
+    font-weight: normal;
     width: 35px;
     height: 35px;
     border-radius: 17.5px;
