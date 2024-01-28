@@ -1,14 +1,65 @@
-{% extends "stemlife/layout.html" %}
 
-{% block body %}
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <input type="text", name="username", placeholder="Username">
-        <input type="password", name="password", placeholder="Password">
-        <input type="submit", value="Login">
-    </form>
+{% load static %}
+{% block script %}
+    <script src="{% static 'stemlife/main_page.js' %}"></script>
+    <!-- <script src="{% static 'stemlife/style.css' %}"></script>
+    <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
 {% endblock %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life As STEM</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="h1">Life As STEM</div>
+        {% if user.is_authenticated %}
+            <div class="pIntro">Greetings {{request.user.username}}, welcome to Life as STEM! </div>
+        {% else %}
+            <div class="pIntro">Greetings fellow humans. Welcome to Life as STEM! </div>
+        {% endif %}
+        <!-- <div class="game" id="game"> -->
+            <div class="scores"id="score">
+                <h2 id="playerScore">Age: 10</h2>
+            </div>
+            <div class="box">
+                <canvas id="myCanvas" width="500" height="400"style="border: 1px solid black; background-color: #f4d8cdff;"></canvas>
+                <!-- <input type="readonly"> -->
+            </div>
+            
+        {% block body %}
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="post" class="loginEntry">
+            {% csrf_token %}
+            <input type="text", name="username", placeholder="Username">
+            <input type="password", name="password", placeholder="Password">
+            <input type="submit", value="Login">
+        </form>
+
+        <!-- </div> -->
+    </div>
+</body>
+    <script src="life_as_stem.js"></script>
+    <script src="main_page.js"></script>
+</html>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

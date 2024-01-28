@@ -44,6 +44,24 @@ body{
     bottom: 60px;
     left: 540px;
 }
+.loginForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginEntry{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+div.loginButton, div.logoutButton {
+    width: 30px;
+    height: 30px;
+}
+
+
 button{
     background-color: #007AFF;
     color: white;

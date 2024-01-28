@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.db import IntegrityError
 from django.urls import reverse
 from .models import User, Questions
@@ -63,4 +63,5 @@ def register(request):
 #data
     
 def questions(request):
-    question = Questions.objects.get
+    questions = Questions.objects.all()
+    return JsonResponse([question.serialize() for question in questions],safe=False)

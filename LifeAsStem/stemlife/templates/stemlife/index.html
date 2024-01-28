@@ -9,6 +9,7 @@
 
 
 
+{% block body %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,11 @@
 <body>
     <div class="card">
         <div class="h1">Life As STEM</div>
-        <div class="pIntro">Greetings fellow humans, welcome to Life as STEM</div>
+        {% if user.is_authenticated %}
+            <div class="pIntro">Greetings {{request.user.username}}, welcome to Life as STEM! </div>
+        {% else %}
+            <div class="pIntro">Greetings fellow humans. Welcome to Life as STEM! </div>
+        {% endif %}
         <!-- <div class="game" id="game"> -->
             <div class="scores"id="score">
                 <h2 id="playerScore">Age: 10</h2>
@@ -37,9 +42,22 @@
             <div class = "computerInput"id="computerInput">
                 <input type="text" spellcheck="false" visibility="hidden" color="white">
             </div> 
+            <div class="loginForm">
+                <form action="{% url 'login' %}">
+                    <button id="login" >Login</button>
+                </form>
+                <form action="{% url 'register' %}">
+                    <button id="register">Register</button>
+                </form>
+                <form action="{% url 'logout' %}">
+                    <button id="logout">Logout</button>
+                </form>
+            </div>
         <!-- </div> -->
     </div>
 </body>
     <script src="life_as_stem.js"></script>
     <script src="main_page.js"></script>
 </html>
+
+{% endblock %}
