@@ -6,9 +6,11 @@ urlpatterns = [
     path('login', views.login_view, name="login"),
     path('logout', views.logout_view, name="logout"),
     path('register', views.register, name='register'),
+    path('final', views.final, name='final'),
 
 
     #API
     path("questions", views.questions, name="questions"),
-    path("update/<int:cat_number>/<int:age>", views.update, name="update")
+    path("update/<int:cat_number>/<int:age>", views.update, name="update"),
+    path('final', views.final, name='final'),
 ]

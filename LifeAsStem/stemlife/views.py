@@ -63,6 +63,12 @@ def register(request):
         return render(request, "stemlife/register.html")
     
 
+
+
+
+
+def final(request):
+    return render(request, "stemlife/final.html")
 #data
     
 def questions(request):

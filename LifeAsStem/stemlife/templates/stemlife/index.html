@@ -34,28 +34,32 @@
                 <!-- <input type="readonly"> -->
             </div>
             <div class="newGameButton">
-                <button id="new"font-size: "27px" font-weight: "bolder">+</button>
+                <button id="new">Age Up!</button>
             </div>
-            <div class="search">
+            <!-- <div class="search">
                 <input type="text" placeholder="Text" spellcheck="false">
-            </div>
-            <div class = "computerInput"id="computerInput">
-                <input type="text" spellcheck="false" visibility="hidden" color="white">
+            </div> -->
+            <div class = "computerInput"id="computerInput" style="position: relative; max-width:500px; bottom:70%; left:15%; text-align: center; color: black;">
+                Welcome to life as STEM! You will be given a series of questions to answer. Answer them and age up!
             </div> 
-            <div class="loginForm">
-                <form >
-                    <button id="ans_one"text=""font-size="12x"font-weight: "normal"; ></button>
+            <div class="loginForm" style="position: absolute; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 20px; margin-left: 260px; margin-bottom: 500px; ">
+                <form>
+                    <button id="ans_one" style="font-size: 12px; padding: 10px; ">A</button>
                 </form>
                 <form>
-                    <button id="ans_two"text=""font-size="12x"font-weight: "normal"></button>
+                    <button id="ans_two" style="font-size: 12px; padding: 10px; margin-left: 150px; ">B</button>
                 </form>
                 <form>
-                    <button id="ans_three"text=""font-size="12x"font-weight: "normal"></button>
+                    <button id="ans_three" style="font-size: 12px; padding: 10px; margin-top: 150px;">C</button>
                 </form>
                 <form>
-                    <button id="ans_four" text=""font-size="12x"font-weight: "normal"></button>
+                    <button id="ans_four" style="font-size: 12px; padding: 10px; margin-left: 150px; margin-top: 150px;">D</button>
                 </form>
+
             </div>
+            <form  action="{% url 'final'%}">
+                <button id="ans_five"style="font-size: 12px; position: relative; padding: 10px; margin-left: 50%; margin-bottom: 25%; display: none">Finish Game!</button>
+            </form>
         <!-- </div> -->
     </div>
 </body>

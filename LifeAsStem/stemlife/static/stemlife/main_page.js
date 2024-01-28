@@ -20,14 +20,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     document.getElementById("computerInput").innerHTML = currentQS.text
                     
                     if (currentQS.answer1.length>1){
+                        document.getElementById("ans_one").style.color = "white";
                         document.getElementById("ans_one").style.display = "inline";
                         document.getElementById("ans_one").innerHTML = currentQS.answer1
                     }
                     else{
                         document.getElementById("ans_one").innerHTML = ""
-                        document.getElementById("ans_three").style.display = "none";
+                        document.getElementById("ans_one").style.display = "none";
                     }
                     if (currentQS.answer2.length>1){
+                        document.getElementById("ans_two").style.color = "white";
                         document.getElementById("ans_two").style.display = "inline";
                         document.getElementById("ans_two").innerHTML = currentQS.answer2
                     }
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                         document.getElementById("ans_two").style.display = "none";
                     }
                     if (currentQS.answer3.length>1){
+                        document.getElementById("ans_three").style.color = "white";
                         document.getElementById("ans_three").style.display = "inline";
                         document.getElementById("ans_three").innerHTML = currentQS.answer3
                     }
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                         document.getElementById("ans_three").style.display = "none";
                     }
                     if (currentQS.answer4.length>1){
+                        document.getElementById("ans_four").style.color = "white";
                         document.getElementById("ans_four").style.display = "inline";
                         document.getElementById("ans_four").innerHTML = currentQS.answer4
                     }
@@ -55,6 +59,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
             })
                     });
         playerAge+=1
+        if (playerAge==19){
+            document.getElementById("computerInput").innerHTML = "You have reached adulthood! You have completed the game!"
+            document.getElementById("ans_one").style.display = "none";
+            document.getElementById("ans_two").style.display = "none";
+            document.getElementById("ans_three").style.display = "none";
+            document.getElementById("ans_four").style.display = "none";
+            document.getElementById("ans_five").style.display = "block";
+        }
 
     })
     let ans1 = document.getElementById('ans_one');
@@ -63,6 +75,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let ans4 = document.getElementById('ans_four');
 
     ans1.addEventListener("click", (evt)=>{
+        ans1.style.color = "red";
         evt.preventDefault();
         console.log("ans1 clicked");
         fetch('/update/' + '1' + '/' + playerAge)
@@ -71,6 +84,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     ans2.addEventListener("click", (evt)=>{
+        ans2.style.color = "red";        
         evt.preventDefault();
         console.log("ans2 clicked");
         fetch('/update/' + '2' + '/' + playerAge)
@@ -78,6 +92,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     ans3.addEventListener("click", (evt)=>{
+        ans3.style.color = "red";
         evt.preventDefault();
         console.log("ans3 clicked");
         fetch('/update/' + '3' + '/' + playerAge)
@@ -85,6 +100,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     ans4.addEventListener("click", (evt)=>{
+        ans4.style.color = "red";
         evt.preventDefault();
         console.log("ans4 clicked");
         fetch('/update/' + '4' + '/' + playerAge)

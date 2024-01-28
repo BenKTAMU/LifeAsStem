@@ -38,8 +38,10 @@
         {% if message %}
         <div>{{ message }}</div>
         {% endif %}
-        
-        <form action="{% url 'register' %}" method="post">
+        <h1 style="position: absolute; text-align: center; top:200; left: 335; color:black ">
+            Register!
+        </h1>
+        <form action="{% url 'register' %}" method="post" style="position: absolute; text-align: center; top:350; left: 325;">
             {% csrf_token %}
             <div class="form-group">
                 <input class="form-control" autofocus type="text" name="username" placeholder="Username">

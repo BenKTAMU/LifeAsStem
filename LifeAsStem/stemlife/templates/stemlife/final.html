@@ -1,0 +1,188 @@
+
+{% load static %}
+{% block script %}
+    <script src="{% static 'stemlife/main_page.js' %}"></script>
+    <!-- <script src="{% static 'stemlife/style.css' %}"></script>
+    <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
+{% endblock %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life As STEM</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="h1">Life As STEM</div>
+        {% if user.is_authenticated %}
+            <div class="pIntro">Greetings {{request.user.username}}, welcome to Life as STEM! </div>
+        {% else %}
+            <div class="pIntro">Greetings fellow humans. Welcome to Life as STEM! </div>
+        {% endif %}
+        <!-- <div class="game" id="game"> -->
+            <div class="scores"id="score">
+                <h2 id="playerScore">Age: 10</h2>
+            </div>
+            <div class="box">
+                <canvas id="myCanvas" width="500" height="400"style="border: 1px solid black; background-color: #f4d8cdff;"></canvas>
+                <!-- <input type="readonly"> -->
+            </div>
+            
+        {% block body %}
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+
+        {% if user.engineering > user.science and user.engineering > user.mathematics and user.engineering > user.technology %}
+            <div class="pIntro" id ="engineer" style="text-align: center; position: relative; bottom: 67%; color:black;">You are an engineer!</div>
+            <div style="width: 50%; margin: auto; text-align: center; position: relative; bottom: 67%; color:black;">
+                <h4  style="text-align: center; position: relative; bottom: 60%; color:black;" >
+                    You're an innovator and have the potential to move the world forward in creative and amazing ways!Here are some of the things you could do as an engineer:
+                </h4>
+                <ls style="list-style-type: none;">
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            Aerospace Engineering
+                            <img src="https://images.unsplash.com/photo-1518365050014-70fe7232897f?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 20px; margin-top:10px;">
+                        </div>
+                    </li>
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            Civil Engineering
+                            <img src="https://images.unsplash.com/photo-1463906033650-3288c7071a7b?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 65px; margin-top: 10px">
+                        </div>
+                    </li>
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            Software Engineering
+                            <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?q=80&w=2276&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 35px; margin-top: 10px;">
+                        </div>
+                    </li>
+                </ls>
+            </div>
+
+        {% elif user.science > user.engineering and user.science > user.mathematics and user.science > user.technology %}
+        <div class="pIntro" id ="engineer" style="text-align: center; position: relative; bottom: 67%; color:black;">You are a scientist!</div>
+        <div style="width: 50%; margin: auto; text-align: center; position: relative; bottom: 67%; color:black;">
+            <h4  style="text-align: center; position: relative; bottom: 60%; color:black;" >
+                You're an innovator and have the potential to move the world forward in creative and amazing ways!Here are some of the things you could do as an engineer:
+            </h4>
+            <ls style="list-style-type: none;">
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Chemical Engineering
+                        <img src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 20px; margin-top:10px;">
+                    </div>
+                </li>
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Research
+                        <img src="https://images.unsplash.com/photo-1486825586573-7131f7991bdd?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 65px; margin-top: 10px">
+                    </div>
+                </li>
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Medical
+                        <img src="https://plus.unsplash.com/premium_photo-1673953509975-576678fa6710?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 35px; margin-top: 10px;">
+                    </div>
+                </li>
+            </ls>
+        </div>
+        {% elif user.math > user.engineering and user.mathematics > user.science and user.math > user.technology %}
+            <div class="pIntro">You are a mathematician!</div>
+            <div style="width: 50%; margin: auto; text-align: center; position: relative; bottom: 67%; color:black;">
+                <h4  style="text-align: center; position: relative; bottom: 60%; color:black;" >
+                    You're an innovator and have the potential to move the world forward in creative and amazing ways!Here are some of the things you could do as an engineer:
+                </h4>
+                <ls style="list-style-type: none;">
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            Statistics
+                            <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=2274&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 20px; margin-top:10px;">
+                        </div>
+                    </li>
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            Data Analysis
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 65px; margin-top: 10px">
+                        </div>
+                    </li>
+                    <li>
+                        <div style="display: flex; align-items: center;">
+                            Computer Science
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 35px; margin-top: 10px;">
+                        </div>
+                    </li>
+                </ls>
+            </div>
+        {% elif user.technology > user.engineering and user.technology > user.science and user.technology > user.mathematics %}
+        <div class="pIntro" id ="engineer" style="text-align: center; position: relative; bottom: 67%; color:black;">You are a technologist!</div>
+        <div style="width: 50%; margin: auto; text-align: center; position: relative; bottom: 67%; color:black;">
+            <h4  style="text-align: center; position: relative; bottom: 60%; color:black;" >
+                You're an innovator and have the potential to move the world forward in creative and amazing ways!Here are some of the things you could do as an engineer:
+            </h4>
+            <ls style="list-style-type: none;">
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Computer Science
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 20px; margin-top:10px;">
+                    </div>
+                </li>
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Computer Engineer
+                        <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 65px; margin-top: 10px">
+                    </div>
+                </li>
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Research
+                        <img src="https://plus.unsplash.com/premium_photo-1661644892901-b2e08b5c0bf2?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 35px; margin-top: 10px;">
+                    </div>
+                </li>
+            </ls>
+        </div>
+        {% else %}
+        <div class="pIntro" id ="engineer" style="text-align: center; position: relative; bottom: 67%; color:black;">You are an engineer!</div>
+        <div style="width: 50%; margin: auto; text-align: center; position: relative; bottom: 67%; color:black;">
+            <h4  style="text-align: center; position: relative; bottom: 60%; color:black;" >
+                You're an innovator and have the potential to move the world forward in creative and amazing ways!Here are some of the things you could do as an engineer:
+            </h4>
+            <ls style="list-style-type: none;">
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Aerospace Engineering
+                        <img src="https://images.unsplash.com/photo-1518365050014-70fe7232897f?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 20px; margin-top:10px;">
+                    </div>
+                </li>
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Civil Engineering
+                        <img src="https://images.unsplash.com/photo-1463906033650-3288c7071a7b?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 65px; margin-top: 10px">
+                    </div>
+                </li>
+                <li>
+                    <div style="display: flex; align-items: center;">
+                        Software Engineering
+                        <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?q=80&w=2276&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width : 7vw; height: 7vw; border-radius: 10px; margin-left: 35px; margin-top: 10px;">
+                    </div>
+                </li>
+            </ls>
+        </div>
+        {% endif %}
+
+
+        <!-- </div> -->
+    </div>
+</body>
+    <script src="life_as_stem.js"></script>
+    <script src="main_page.js"></script>
+</html>
+
+{% endblock %}
