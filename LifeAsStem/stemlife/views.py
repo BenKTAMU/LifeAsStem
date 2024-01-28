@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.db import IntegrityError
 from django.urls import reverse
 from .models import User, Questions
-from django.contrib.auth import authenticate, login, logout, questions
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
