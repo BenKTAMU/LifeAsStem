@@ -65,3 +65,30 @@ def register(request):
 def questions(request):
     questions = Questions.objects.all()
     return JsonResponse([question.serialize() for question in questions],safe=False)
+
+def update(request, age, cat_number):
+    user = request.user
+    question = Questions.objects.get(age=age)
+    if question.category == "Science":
+        if cat_number == 1:
+            user.science += 1
+    elif question.category == "Technology":
+        if cat_number == 1:
+            user.technology += 1
+    elif question.category == "Engineering":
+        if cat_number == 1:
+            user.engineering += 1
+    elif question.category == "Mathematics":
+        if cat_number == 1:
+            user.mathematics += 1
+    else:
+        if cat_number == 1:
+            user.science += 1
+        elif cat_number == 2:
+            user.technology += 1
+        elif cat_number == 3:    
+            user.engineering += 1
+        elif cat_number == 4:
+            user.mathematics += 1
+    user.save()
+    return JsonResponse({"message": "Score updated successfully."}, status=201)

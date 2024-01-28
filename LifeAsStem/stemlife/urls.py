@@ -10,4 +10,5 @@ urlpatterns = [
 
     #API
     path("questions", views.questions, name="questions"),
+    path("update/<int:cat_number>/<int:age>", views.update, name="update")
 ]

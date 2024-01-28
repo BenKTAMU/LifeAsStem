@@ -37,6 +37,36 @@ document.addEventListener('DOMContentLoaded', ()=>{
         playerAge+=1
 
     })
+    let ans1 = document.getElementById('ans_one');
+    let ans2 = document.getElementById('ans_two');
+    let ans3 = document.getElementById('ans_three');
+    let ans4 = document.getElementById('ans_four');
+
+    ans1.addEventListener("click", (evt)=>{
+        console.log("ans1 clicked")
+        fetch('/update/' + '1' + '/' + playerAge)
+        .then(response => response.json())
+
+    })
+
+    ans2.addEventListener("click", (evt)=>{
+        console.log("ans2 clicked")
+        fetch('/update/' + '2' + '/' + playerAge)
+        .then(response => response.json())
+    })
+
+    ans3.addEventListener("click", (evt)=>{
+        console.log("ans3 clicked")
+        fetch('/update/' + '3' + '/' + playerAge)
+        .then(response => response.json())
+    })
+
+    ans4.addEventListener("click", (evt)=>{
+        console.log("ans4 clicked")
+        fetch('/update/' + '4' + '/' + playerAge)
+        .then(response => response.json())
+    })
+    
         //if btn and all the questions are answered, increase the age again
         //if not, ask another question from bank of questions
         
