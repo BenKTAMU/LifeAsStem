@@ -7,7 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
-    return render(request, "stemlife/index.html")
+    if request.user.is_authenticated:
+        return render(request, "stemlife/index.html")
+    else:
+        return render(request, "stemlife/register.html")
 
 
 def login_view(request):

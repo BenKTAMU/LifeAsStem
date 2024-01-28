@@ -20,16 +20,36 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     document.getElementById("computerInput").innerHTML = currentQS.text
                     
                     if (currentQS.answer1.length>1){
+                        document.getElementById("ans_one").style.display = "inline";
                         document.getElementById("ans_one").innerHTML = currentQS.answer1
                     }
+                    else{
+                        document.getElementById("ans_one").innerHTML = ""
+                        document.getElementById("ans_three").style.display = "none";
+                    }
                     if (currentQS.answer2.length>1){
+                        document.getElementById("ans_two").style.display = "inline";
                         document.getElementById("ans_two").innerHTML = currentQS.answer2
                     }
+                    else{
+                        document.getElementById("ans_two").innerHTML = ""
+                        document.getElementById("ans_two").style.display = "none";
+                    }
                     if (currentQS.answer3.length>1){
+                        document.getElementById("ans_three").style.display = "inline";
                         document.getElementById("ans_three").innerHTML = currentQS.answer3
                     }
+                    else{
+                        document.getElementById("ans_three").innerHTML = ""
+                        document.getElementById("ans_three").style.display = "none";
+                    }
                     if (currentQS.answer4.length>1){
+                        document.getElementById("ans_four").style.display = "inline";
                         document.getElementById("ans_four").innerHTML = currentQS.answer4
+                    }
+                    else{
+                        document.getElementById("ans_four").innerHTML = ""
+                        document.getElementById("ans_four").style.display = "none";
                     }
                 }
             })
@@ -43,30 +63,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let ans4 = document.getElementById('ans_four');
 
     ans1.addEventListener("click", (evt)=>{
-        console.log("ans1 clicked")
+        evt.preventDefault();
+        console.log("ans1 clicked");
         fetch('/update/' + '1' + '/' + playerAge)
         .then(response => response.json())
 
     })
 
     ans2.addEventListener("click", (evt)=>{
-        console.log("ans2 clicked")
+        evt.preventDefault();
+        console.log("ans2 clicked");
         fetch('/update/' + '2' + '/' + playerAge)
         .then(response => response.json())
     })
 
     ans3.addEventListener("click", (evt)=>{
-        console.log("ans3 clicked")
+        evt.preventDefault();
+        console.log("ans3 clicked");
         fetch('/update/' + '3' + '/' + playerAge)
         .then(response => response.json())
     })
 
     ans4.addEventListener("click", (evt)=>{
-        console.log("ans4 clicked")
+        evt.preventDefault();
+        console.log("ans4 clicked");
         fetch('/update/' + '4' + '/' + playerAge)
         .then(response => response.json())
     })
-    
+
         //if btn and all the questions are answered, increase the age again
         //if not, ask another question from bank of questions
         
