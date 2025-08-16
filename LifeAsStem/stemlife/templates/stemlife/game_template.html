@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life As STEM - Interactive Learning Game</title>
+    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-atom"></i>
+                <h1>Life As STEM</h1>
+            </div>
+            <div class="subtitle">Interactive Learning Adventure</div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-container">
+            <!-- Stats Panel -->
+            <div class="stats-panel">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerAge">10</div>
+                        <div class="stat-label">Age</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="plantHeight">0</div>
+                        <div class="stat-label">Plant Height</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="score">0</div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas Area -->
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="600" height="400"></canvas>
+                <div class="canvas-overlay">
+                    <div class="game-instructions">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>Click the + button to grow and learn!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="controls-panel">
+                <button class="control-btn primary" id="growBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Grow & Learn</span>
+                </button>
+                
+                <button class="control-btn secondary" id="resetBtn">
+                    <i class="fas fa-redo"></i>
+                    <span>Reset</span>
+                </button>
+            </div>
+
+            <!-- Question Panel -->
+            <div class="question-panel" id="questionPanel">
+                <div class="question-header">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>STEM Question</h3>
+                </div>
+                <div class="question-content" id="questionContent">
+                    <p>Ready to learn? Click "Grow & Learn" to start!</p>
+                </div>
+                <div class="question-actions" id="questionActions">
+                    <!-- Answer options will be populated here -->
+                </div>
+            </div>
+
+            <!-- Search Panel -->
+            <div class="search-panel">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search STEM topics..." class="search-input">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Life As STEM. Making learning fun and interactive!</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'stemlife/main_page.js' %}"></script>
+</body>
+</html>

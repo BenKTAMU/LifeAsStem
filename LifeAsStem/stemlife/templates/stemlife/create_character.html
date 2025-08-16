@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Character - Life As STEM</title>
+    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-atom"></i>
+                <h1>Life As STEM</h1>
+            </div>
+            <div class="subtitle">Create Your Character</div>
+        </header>
+
+        <!-- Character Creation Form -->
+        <main class="character-creation">
+            <div class="creation-card">
+                <div class="card-header">
+                    <i class="fas fa-user-plus"></i>
+                    <h2>Begin Your Journey</h2>
+                </div>
+                
+                {% if message %}
+                <div class="message error" style="margin-bottom: 20px; padding: 15px; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; border-radius: 8px;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    {{ message }}
+                </div>
+                {% endif %}
+                
+                <form method="POST" action="{% url 'create_character' %}" class="creation-form" onsubmit="console.log('Character creation form submitted'); return true;">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Character Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your character's name">
+                    </div>
+                    
+                    <div class="character-preview">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="stats-preview">
+                            <div class="stat-item">
+                                <span class="stat-label">Health:</span>
+                                <span class="stat-value">100</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Intelligence:</span>
+                                <span class="stat-value">50</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Creativity:</span>
+                                <span class="stat-value">50</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Logic:</span>
+                                <span class="stat-value">50</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Social Skills:</span>
+                                <span class="stat-value">50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary" onclick="console.log('Start Life Journey button clicked');">
+                            <i class="fas fa-play"></i>
+                            Start Life Journey
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Debug info -->
+                <div style="margin-top: 20px; padding: 10px; background: #f0f0f0; border-radius: 8px; font-size: 12px; color: #666;">
+                    <p><strong>Debug Info:</strong></p>
+                    <p>Form action: {% url 'create_character' %}</p>
+                    <p>Method: POST</p>
+                    <p>CSRF Token: {{ csrf_token }}</p>
+                    <p>User: {{ request.user.username }}</p>
+                </div>
+                
+                <div class="game-info">
+                    <h3>How It Works</h3>
+                    <ul>
+                        <li><i class="fas fa-baby"></i> Start as an infant and grow through life stages</li>
+                        <li><i class="fas fa-question-circle"></i> Make choices that shape your character's development</li>
+                        <li><i class="fas fa-flask"></i> Build interest in Science, Technology, Engineering, and Math</li>
+                        <li><i class="fas fa-graduation-cap"></i> Get personalized STEM field recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Life As STEM. Your journey to STEM discovery starts here!</p>
+        </footer>
+    </div>
+</body>
+</html> 

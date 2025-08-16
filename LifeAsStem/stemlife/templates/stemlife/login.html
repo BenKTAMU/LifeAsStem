@@ -1,65 +1,76 @@
-
 {% load static %}
-{% block script %}
-    <script src="{% static 'stemlife/main_page.js' %}"></script>
-    <!-- <script src="{% static 'stemlife/style.css' %}"></script>
-    <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
-{% endblock %}
-
-
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Life As STEM</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life As STEM - Login</title>
+    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    <div class="card">
-        <div class="h1">Life As STEM</div>
-        {% if user.is_authenticated %}
-            <div class="pIntro">Greetings {{request.user.username}}, welcome to Life as STEM! </div>
-        {% else %}
-            <div class="pIntro">Greetings fellow humans. Welcome to Life as STEM! </div>
-        {% endif %}
-        <!-- <div class="game" id="game"> -->
-            <div class="scores"id="score">
-                <h2 id="playerScore">Age: 10</h2>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-atom"></i>
+                <h1>Life As STEM</h1>
             </div>
-            <div class="box">
-                <canvas id="myCanvas" width="500" height="400"style="border: 1px solid black; background-color: #f4d8cdff;"></canvas>
-                <!-- <input type="readonly"> -->
+            <div class="subtitle">Interactive Learning Adventure</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue your STEM journey</p>
+                </div>
+
+                {% if message %}
+                <div class="message error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    {{ message }}
+                </div>
+                {% endif %}
+
+                <form action="{% url 'login' %}" method="post" class="auth-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Username
+                        </label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="{% url 'register' %}" class="auth-link">Sign up here</a></p>
+                </div>
             </div>
-            
-        {% block body %}
-        {% if message %}
-            <div>{{ message }}</div>
-        {% endif %}
+        </main>
 
-        <form action="{% url 'login' %}" method="post" class="loginEntry">
-            {% csrf_token %}
-            <input type="text", name="username", placeholder="Username">
-            <input type="password", name="password", placeholder="Password">
-            <input type="submit", value="Login">
-        </form>
-
-        <!-- </div> -->
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Life As STEM. Making learning fun and interactive!</p>
+        </footer>
     </div>
 </body>
-    <script src="life_as_stem.js"></script>
-    <script src="main_page.js"></script>
 </html>
-
-{% endblock %}
-
-
-
-
-
-
-
-
-

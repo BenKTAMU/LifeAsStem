@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ player.name }}'s Life - Life As STEM</title>
+    <link rel="stylesheet" href="{% static 'stemlife/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-atom"></i>
+                <h1>Life As STEM</h1>
+            </div>
+            <div class="subtitle">{{ player.name }}'s Life Journey</div>
+            <div class="user-info">
+                <span>Welcome, {{ request.user.username }}</span>
+                <a href="{% url 'logout' %}" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-container">
+            <!-- Stats Panel -->
+            <div class="stats-panel">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerAge">{{ player.age }}</div>
+                        <div class="stat-label">Age</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerHealth">{{ player.health }}</div>
+                        <div class="stat-label">Health</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerIntelligence">{{ player.intelligence }}</div>
+                        <div class="stat-label">Intelligence</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerCreativity">{{ player.creativity }}</div>
+                        <div class="stat-label">Creativity</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerLogic">{{ player.logic }}</div>
+                        <div class="stat-label">Logic</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="playerSocial">{{ player.social_skills }}</div>
+                        <div class="stat-label">Social</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Life Event Panel - Main Focus -->
+            <div class="life-event-panel" id="lifeEventPanel">
+                <div class="event-header">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>Your Life Event</h3>
+                </div>
+                <div class="event-category" id="eventCategory">
+                    <!-- Event category will be displayed here -->
+                </div>
+                <div class="event-content" id="eventContent">
+                    <p>Loading your next life event...</p>
+                </div>
+                <div class="event-choices" id="eventChoices">
+                    <!-- Choices will be populated here -->
+                </div>
+            </div>
+
+            <!-- STEM Interests Panel -->
+            <div class="stem-interests-panel">
+                <h3>STEM Interests</h3>
+                <div class="interest-bars">
+                    <div class="interest-item">
+                        <span class="interest-label">Science</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="scienceProgress" style="width: {{ player.science_interest }}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="interest-item">
+                        <span class="interest-label">Technology</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="technologyProgress" style="width: {{ player.technology_interest }}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="interest-item">
+                        <span class="interest-label">Engineering</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="engineeringProgress" style="width: {{ player.engineering_interest }}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="interest-item">
+                        <span class="interest-label">Mathematics</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="mathProgress" style="width: {{ player.math_interest }}%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Game Controls -->
+        <div class="game-controls">
+            <button class="control-btn secondary" id="nextEventBtn" title="Manually load next event (events now flow automatically)">
+                <i class="fas fa-forward"></i>
+                Manual Next Event
+            </button>
+            
+            <button class="control-btn primary" id="getRecommendationBtn" {% if player.age < 18 %}disabled{% endif %}>
+                <i class="fas fa-graduation-cap"></i>
+                Get STEM Recommendation
+            </button>
+            
+            <button class="control-btn warning" id="resetGameBtn">
+                <i class="fas fa-redo"></i>
+                Start Over
+            </button>
+        </div>
+
+        <!-- STEM Recommendation Modal -->
+        <div class="modal" id="recommendationModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Your STEM Field Recommendation</h3>
+                    <span class="close" id="closeModal">&times;</span>
+                </div>
+                <div class="modal-body" id="recommendationContent">
+                    <!-- Recommendation content will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Life As STEM. Making STEM discovery fun and interactive!</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'stemlife/game.js' %}"></script>
+</body>
+</html> 
