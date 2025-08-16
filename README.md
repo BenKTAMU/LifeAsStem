@@ -162,16 +162,4 @@ Customize the game's appearance by modifying the CSS in `static/stemlife/style.c
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Inspired by life simulation games like BitLife
-- Designed to encourage STEM education and career exploration
-- Built with Django and modern web technologies
-
-## Support
-
-For questions or support, please open an issue on the GitHub repository. 
